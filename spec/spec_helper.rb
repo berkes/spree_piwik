@@ -49,6 +49,11 @@ RSpec.configure do |config|
   # current_path.should eql(spree.products_path)
   config.include Spree::TestingSupport::UrlHelpers
 
+  ## == Fixture Helpers
+  #
+  # Allows access to fixture files
+  config.include FixtureHelpers
+
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -60,7 +65,7 @@ RSpec.configure do |config|
   config.color = true
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = File.join(File.dirname(__FILE__), 'fixtures')
 
   # Capybara javascript drivers require transactional fixtures set to false, and we use DatabaseCleaner
   # to cleanup after each test instead.  Without transactional fixtures set to false the records created
