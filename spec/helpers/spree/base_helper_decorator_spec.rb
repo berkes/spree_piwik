@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe Spree::BaseHelper, type: :helper do
   describe "#piwik_client" do
     it 'returns a PiwikClient' do
