@@ -31,6 +31,7 @@ require 'spree/testing_support/capybara_ext'
 require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
+require 'spree/testing_support/preferences'
 
 # Requires factories defined in lib/spree_piwik/factories.rb
 require 'spree_piwik/factories'
@@ -48,6 +49,9 @@ RSpec.configure do |config|
   # visit spree.admin_path
   # current_path.should eql(spree.products_path)
   config.include Spree::TestingSupport::UrlHelpers
+
+  # Allow resetting of config.
+  config.include Spree::TestingSupport::Preferences
 
   ## == Fixture Helpers
   #
@@ -82,6 +86,8 @@ RSpec.configure do |config|
   config.before :each do
     DatabaseCleaner.strategy = RSpec.current_example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
+
+    reset_spree_preferences
   end
 
   # After each spec clean the database.

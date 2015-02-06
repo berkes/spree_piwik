@@ -1,8 +1,8 @@
 <!-- Piwik -->
 <script type="text/javascript">
     var _paq = _paq || [];
-    (function(){ var u=(("https:" == document.location.protocol) ? "https://example.com/" : "http://example.com/");
-    _paq.push(['setSiteId', 1337]);
+    (function(){ var u=(("https:" == document.location.protocol) ? "https://<%= Spree::Config.preferred_piwik_url %>/" : "http://<%= Spree::Config.preferred_piwik_url %>/");
+    _paq.push(['setSiteId', <%= Spree::Config.preferred_piwik_id %>]);
     _paq.push(['setTrackerUrl', u+'piwik.php']);
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
