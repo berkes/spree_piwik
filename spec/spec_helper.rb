@@ -31,6 +31,7 @@ require 'spree/testing_support/capybara_ext'
 require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
+require 'spree/testing_support/preferences'
 
 # Requires factories defined in lib/spree_piwik/factories.rb
 require 'spree_piwik/factories'
@@ -49,6 +50,14 @@ RSpec.configure do |config|
   # current_path.should eql(spree.products_path)
   config.include Spree::TestingSupport::UrlHelpers
 
+  # Allow resetting of config.
+  config.include Spree::TestingSupport::Preferences
+
+  ## == Fixture Helpers
+  #
+  # Allows access to fixture files
+  config.include FixtureHelpers
+
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -60,7 +69,7 @@ RSpec.configure do |config|
   config.color = true
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = File.join(File.dirname(__FILE__), 'fixtures')
 
   # Capybara javascript drivers require transactional fixtures set to false, and we use DatabaseCleaner
   # to cleanup after each test instead.  Without transactional fixtures set to false the records created
@@ -77,6 +86,8 @@ RSpec.configure do |config|
   config.before :each do
     DatabaseCleaner.strategy = RSpec.current_example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
+
+    reset_spree_preferences
   end
 
   # After each spec clean the database.
