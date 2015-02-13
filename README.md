@@ -3,6 +3,11 @@ SpreePiwik
 
 Adds piwik tracking with Ecommerce tracking
 
+Status
+------
+
+[![Build Status](https://travis-ci.org/berkes/spree_piwik.svg?branch=develop)](https://travis-ci.org/berkes/spree_piwik)
+
 Installation
 ------------
 
