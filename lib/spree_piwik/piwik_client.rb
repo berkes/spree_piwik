@@ -15,5 +15,11 @@ module SpreePiwik
     def product
       @product
     end
+
+    def categories
+      taxons = @product.try(:taxons) || []
+
+      taxons.map(&:name).first(5)
+    end
   end
 end

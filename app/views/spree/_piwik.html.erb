@@ -8,7 +8,7 @@
     _paq.push(['setEcommerceView',
       "<%= piwik_client.product.sku %>",
       "<%= piwik_client.product.name %>",
-      "Adventure Books",
+      <%= raw piwik_client.categories.to_json %>,
       <%= piwik_client.product.price %>
       ]);
   <% end %>
