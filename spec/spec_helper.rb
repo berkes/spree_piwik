@@ -16,7 +16,6 @@ ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../dummy/config/environment.rb',  __FILE__)
 
 require 'rspec/rails'
-require 'debugger'
 require 'launchy'
 require 'database_cleaner'
 require 'ffaker'
