@@ -12,7 +12,7 @@ module SpreePiwik
       g.test_framework :rspec
     end
 
-    initializer 'spree.piwik.preferences', after: 'spree.environment' do
+    initializer 'spree.piwik.environment', :before => :load_config_initializers do |app|
       Spree::Piwik::Config = Spree::PiwikConfiguration.new
     end
 
