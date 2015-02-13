@@ -1,5 +1,8 @@
-module Spree::Piwik
+module Spree
+  module Piwik
+  end
 end
+
 
 module SpreePiwik
   class Engine < Rails::Engine
