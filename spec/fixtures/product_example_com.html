@@ -1,20 +1,16 @@
-<!-- Piwik -->
 <script type="text/javascript">
     var _paq = _paq || [];
-    (function(){ var u=(("https:" == document.location.protocol) ? "https://<%= piwik_client.url %>/" : "http://<%= piwik_client.url %>/");
-    _paq.push(['setSiteId', <%= piwik_client.site_id %>]);
+    (function(){ var u=(("https:" == document.location.protocol) ? "https://example.com/" : "http://example.com/");
+    _paq.push(['setSiteId', 0]);
     _paq.push(['setTrackerUrl', u+'piwik.php']);
-  <%- if piwik_client.product %>
     _paq.push(['setEcommerceView',
-      "<%= piwik_client.product.sku %>",
-      "<%= piwik_client.product.name %>",
+      "SKU-1",
+      "RoR Shirt",
       "Adventure Books",
-      <%= piwik_client.product.price %>
+      19.99
       ]);
-  <% end %>
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
     s.parentNode.insertBefore(g,s); })();
 </script>
-<!-- End Piwik Code -->

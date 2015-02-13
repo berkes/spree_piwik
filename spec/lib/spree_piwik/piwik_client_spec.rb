@@ -11,4 +11,11 @@ describe SpreePiwik::PiwikClient do
     allow(Spree::Config).to receive(:preferred_piwik_id).and_return 1337
     expect(subject.site_id).to eq 1337
   end
+
+  describe '#product' do
+    it 'can be set on initialisation' do
+      product = double(:product)
+      expect(SpreePiwik::PiwikClient.new(product: product).product).to eq product
+    end
+  end
 end
