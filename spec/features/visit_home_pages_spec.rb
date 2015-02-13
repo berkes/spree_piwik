@@ -3,8 +3,8 @@ require 'spec_helper'
 feature "TrackingTagForIndex", type: :feature do
   before do
     # User has set piwik_url and piwik_id
-    Spree::Config.set(piwik_url: 'piwik.example.com')
-    Spree::Config.set(piwik_id: 1337)
+    Spree::Piwik::Config.set(piwik_url: 'piwik.example.com')
+    Spree::Piwik::Config.set(piwik_id: 1337)
   end
 
   scenario "An anonymous user is tracked on the home page" do

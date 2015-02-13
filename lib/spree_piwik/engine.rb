@@ -1,3 +1,9 @@
+module Spree
+  module Piwik
+  end
+end
+
+
 module SpreePiwik
   class Engine < Rails::Engine
     require 'spree/core'
@@ -7,6 +13,10 @@ module SpreePiwik
     # use rspec for tests
     config.generators do |g|
       g.test_framework :rspec
+    end
+
+    initializer 'spree.piwik.environment', :before => :load_config_initializers do |app|
+      Spree::Piwik::Config = Spree::PiwikConfiguration.new
     end
 
     def self.activate
