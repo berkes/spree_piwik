@@ -4,6 +4,14 @@
     (function(){ var u=(("https:" == document.location.protocol) ? "https://<%= piwik_client.url %>/" : "http://<%= piwik_client.url %>/");
     _paq.push(['setSiteId', <%= piwik_client.site_id %>]);
     _paq.push(['setTrackerUrl', u+'piwik.php']);
+  <%- if piwik_client.product %>
+    _paq.push(['setEcommerceView',
+      "<%= piwik_client.product.sku %>",
+      "<%= piwik_client.product.name %>",
+      <%= raw piwik_client.categories.to_json %>,
+      <%= piwik_client.product.price %>
+      ]);
+  <% end %>
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
