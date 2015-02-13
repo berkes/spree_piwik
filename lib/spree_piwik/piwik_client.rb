@@ -5,11 +5,11 @@ module SpreePiwik
     end
 
     def url
-      Spree::Config.preferred_piwik_url
+      Spree::Piwik::Config.preferred_piwik_url
     end
 
     def site_id
-      Spree::Config.preferred_piwik_id
+      Spree::Piwik::Config.preferred_piwik_id
     end
 
     def product
