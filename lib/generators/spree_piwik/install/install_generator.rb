@@ -1,4 +1,4 @@
-module SpreePiwik
+module Spree::Piwik
   module Generators
     class InstallGenerator < Rails::Generators::Base
 

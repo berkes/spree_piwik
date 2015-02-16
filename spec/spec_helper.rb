@@ -32,9 +32,6 @@ require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
 require 'spree/testing_support/preferences'
 
-# Requires factories defined in lib/spree_piwik/factories.rb
-require 'spree_piwik/factories'
-
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 

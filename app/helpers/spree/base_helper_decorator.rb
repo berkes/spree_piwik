@@ -1,5 +1,5 @@
 Spree::BaseHelper.class_eval do
   def piwik_client
-    @piwik_client ||= SpreePiwik::PiwikClient.new(product: @product)
+    @piwik_client ||= Spree::Piwik::Client.new(product: @product)
   end
 end

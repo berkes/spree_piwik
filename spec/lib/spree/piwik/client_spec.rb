@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe SpreePiwik::PiwikClient do
-  subject { SpreePiwik::PiwikClient.new }
+describe Spree::Piwik::Client do
+  subject { Spree::Piwik::Client.new }
   it 'fetches the url from preferences' do
     allow(Spree::Piwik::Config).to receive(:preferred_piwik_url).and_return 'piwik.example.com'
     expect(subject.url).to eq 'piwik.example.com'
@@ -15,7 +15,7 @@ describe SpreePiwik::PiwikClient do
   describe '#product' do
     it 'can be set on initialisation' do
       product = double(:product)
-      expect(SpreePiwik::PiwikClient.new(product: product).product).to eq product
+      expect(Spree::Piwik::Client.new(product: product).product).to eq product
     end
   end
 
@@ -24,7 +24,7 @@ describe SpreePiwik::PiwikClient do
       it 'returns the name of the taxons of the product' do
         taxon   = double(:taxon, name: 'shirts')
         product = double(:product, taxons: [taxon])
-        expect(SpreePiwik::PiwikClient.new(product: product).categories).to match_array ['shirts']
+        expect(Spree::Piwik::Client.new(product: product).categories).to match_array ['shirts']
       end
     end
 
@@ -32,20 +32,20 @@ describe SpreePiwik::PiwikClient do
       it 'limits the categories to five items' do
         taxon   = double(:taxon, name: 'shirts')
         product = double(:product, taxons: Array.new(6, taxon))
-        expect(SpreePiwik::PiwikClient.new(product: product).categories.length).to eq 5
+        expect(Spree::Piwik::Client.new(product: product).categories.length).to eq 5
       end
     end
 
     context 'when it has a product with no taxons' do
       it 'returns an empty array' do
         product = double(:product, taxons: [])
-        expect(SpreePiwik::PiwikClient.new(product: product).categories).to eq []
+        expect(Spree::Piwik::Client.new(product: product).categories).to eq []
       end
     end
 
     context 'when it has no product' do
       it 'returns an empty array' do
-        expect(SpreePiwik::PiwikClient.new.categories).to eq []
+        expect(Spree::Piwik::Client.new.categories).to eq []
       end
     end
 
