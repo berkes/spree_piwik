@@ -1,4 +1,5 @@
-module Spree::Piwik
+# Must be named SpreePiwik because dummygenerator expects it
+module SpreePiwik
   module Generators
     class InstallGenerator < Rails::Generators::Base
 
