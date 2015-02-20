@@ -1,10 +1,9 @@
 module Spree
   module Piwik
     class Client
-      def initialize(attrs = {})
-        @product = attrs[:product]
-        @order   = attrs[:order]
-      end
+      include ActiveModel::Model
+
+      attr_accessor :product, :order
 
       def url
         Spree::Piwik::Config.preferred_piwik_url
@@ -12,14 +11,6 @@ module Spree
 
       def site_id
         Spree::Piwik::Config.preferred_piwik_id
-      end
-
-      def product
-        @product
-      end
-
-      def order
-        @order
       end
 
       def ecommerce_item

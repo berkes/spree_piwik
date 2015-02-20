@@ -1,7 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Piwik::Client do
-  subject { Spree::Piwik::Client.new }
+describe Spree::Piwik::Client, type: :model do
   it 'fetches the url from preferences' do
     allow(Spree::Piwik::Config).to receive(:preferred_piwik_url).and_return 'piwik.example.com'
     expect(subject.url).to eq 'piwik.example.com'
@@ -52,7 +51,7 @@ describe Spree::Piwik::Client do
 
     context 'when it has no product' do
       it 'returns an empty array' do
-        expect(Spree::Piwik::Client.new.categories).to eq []
+        expect(subject.categories).to eq []
       end
     end
   end
@@ -88,5 +87,4 @@ describe Spree::Piwik::Client do
       end
     end
   end
-
 end
