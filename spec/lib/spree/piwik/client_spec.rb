@@ -19,6 +19,13 @@ describe Spree::Piwik::Client do
     end
   end
 
+  describe '#order' do
+    it 'can be set on initialisation' do
+      order = double(:order)
+      expect(Spree::Piwik::Client.new(order: order).order).to eq order
+    end
+  end
+
   describe '#categories' do
     context 'when it has a product with taxons' do
       it 'returns the name of the taxons of the product' do
@@ -48,6 +55,28 @@ describe Spree::Piwik::Client do
         expect(Spree::Piwik::Client.new.categories).to eq []
       end
     end
-
   end
+
+  describe '#track_cart_update?' do
+    context 'when order with state cart is set' do
+      it 'is true' do
+        order = double(:order, cart?: true)
+        expect(Spree::Piwik::Client.new(order: order).track_cart_update?).to eq true
+      end
+    end
+
+    context 'when order state is not cart' do
+      it 'is false' do
+        order = double(:order, cart?: false)
+        expect(Spree::Piwik::Client.new(order: order).track_cart_update?).to eq false
+      end
+    end
+
+    context 'when order is empty' do
+      it 'is false' do
+        expect(subject.track_cart_update?).to eq false
+      end
+    end
+  end
+
 end

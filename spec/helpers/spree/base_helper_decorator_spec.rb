@@ -22,5 +22,12 @@ describe Spree::BaseHelper, type: :helper do
         expect(helper.piwik_client.product).to be_nil
       end
     end
+
+    context 'when there is an @order' do
+      before { @order = assign(:order, double(:order)) }
+      it 'passes in the order' do
+        expect(helper.piwik_client.order).to eq @order
+      end
+    end
   end
 end

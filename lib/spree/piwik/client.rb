@@ -3,6 +3,7 @@ module Spree
     class Client
       def initialize(attrs = {})
         @product = attrs[:product]
+        @order   = attrs[:order]
       end
 
       def url
@@ -15,6 +16,14 @@ module Spree
 
       def product
         @product
+      end
+
+      def order
+        @order
+      end
+
+      def track_cart_update?
+        !@order.nil? && @order.cart?
       end
 
       def categories
