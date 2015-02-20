@@ -13,7 +13,8 @@ describe Spree::BaseHelper, type: :helper do
     context 'when there is an @product' do
       before { @product = assign(:product, double(:product)) }
       it 'passes in @product' do
-        expect(helper.piwik_client.product).to eq @product
+        expect(Spree::Piwik::Client).to receive(:new).with(hash_including(product: @product))
+        helper.piwik_client
       end
     end
 
@@ -26,7 +27,8 @@ describe Spree::BaseHelper, type: :helper do
     context 'when there is an @order' do
       before { @order = assign(:order, double(:order)) }
       it 'passes in the order' do
-        expect(helper.piwik_client.order).to eq @order
+        expect(Spree::Piwik::Client).to receive(:new).with(hash_including(order: @order))
+        helper.piwik_client
       end
     end
   end
