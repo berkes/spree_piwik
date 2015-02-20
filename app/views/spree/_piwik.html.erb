@@ -13,6 +13,13 @@
       ]);
   <% end %>
   <% if piwik_client.track_cart_update? %>
+    _paq.push(['addEcommerceItem',
+      "<%= piwik_client.ecommerce_item.sku %>",
+      "<%= piwik_client.ecommerce_item.name %>",
+      <%= raw piwik_client.categories.to_json %>,
+      <%= piwik_client.ecommerce_item.price %>,
+      <%= piwik_client.ecommerce_item.quantity %>
+      ]);
     _paq.push(['trackEcommerceCartUpdate', 19.99]);
   <% end %>
     _paq.push(['trackPageView']);

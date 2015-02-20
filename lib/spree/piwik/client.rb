@@ -22,6 +22,10 @@ module Spree
         @order
       end
 
+      def ecommerce_item
+        @order.line_items.first
+      end
+
       def track_cart_update?
         !@order.nil? && @order.cart?
       end

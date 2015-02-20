@@ -57,6 +57,16 @@ describe Spree::Piwik::Client do
     end
   end
 
+  describe '#ecommerce_item' do
+    context 'when order is set' do
+      it 'has the first line_item in the order' do
+        product = double(:product)
+        order = double(:order, line_items: [product])
+        expect(Spree::Piwik::Client.new(order: order).ecommerce_item).to eq product
+      end
+    end
+  end
+
   describe '#track_cart_update?' do
     context 'when order with state cart is set' do
       it 'is true' do
