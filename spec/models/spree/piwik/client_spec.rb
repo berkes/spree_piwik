@@ -12,9 +12,19 @@ describe Spree::Piwik::Client, type: :model do
   end
 
   describe '#product' do
-    it 'can be set on initialisation' do
-      product = double(:product)
-      expect(Spree::Piwik::Client.new(product: product).product).to eq product
+    context 'when it has a product' do
+      before { subject.product = double(:product, sku: 'sku', name: nil, price: nil) }
+      it 'is an line_item with that product' do
+        expect(subject.product).to be_a_kind_of Spree::Piwik::LineItem
+        expect(subject.product.sku).to eq 'sku'
+      end
+    end
+
+    context 'when it has no product' do
+      before { subject.product = nil }
+      it 'is nil' do
+        expect(subject.product).to be_nil
+      end
     end
   end
 
@@ -59,9 +69,11 @@ describe Spree::Piwik::Client, type: :model do
   describe '#ecommerce_item' do
     context 'when order is set' do
       it 'has the first line_item in the order' do
-        product = double(:product)
-        order = double(:order, line_items: [product])
-        expect(Spree::Piwik::Client.new(order: order).ecommerce_item).to eq product
+        product = double(:product, sku: 'sku', name: 'name', price: 'price', quantity: 1)
+        subject.order = double(:order, line_items: [product])
+        expect(subject.ecommerce_item).to be_a_kind_of Spree::Piwik::LineItem
+        expect(subject.ecommerce_item.sku).to eq 'sku'
+        expect(subject.ecommerce_item.quantity).to eq 1
       end
     end
   end

@@ -5,6 +5,10 @@ module Spree
 
       attr_accessor :product, :order
 
+      def product
+        LineItem.from_product(@product) if @product
+      end
+
       def url
         Spree::Piwik::Config.preferred_piwik_url
       end
@@ -14,7 +18,7 @@ module Spree
       end
 
       def ecommerce_item
-        @order.line_items.first
+        LineItem.from_spree_line_item(@order.line_items.first)
       end
 
       def track_cart_update?
