@@ -13,7 +13,7 @@ describe Spree::Piwik::Client, type: :model do
 
   describe '#product' do
     context 'when it has a product' do
-      before { subject.product = double(:product, sku: 'sku', name: nil, price: nil) }
+      before { subject.product = double(:product, sku: 'sku', name: nil, price: nil, taxons: []) }
       it 'is an line_item with that product' do
         expect(subject.product).to be_a_kind_of Spree::Piwik::LineItem
         expect(subject.product.sku).to eq 'sku'
@@ -32,37 +32,6 @@ describe Spree::Piwik::Client, type: :model do
     it 'can be set on initialisation' do
       order = double(:order)
       expect(Spree::Piwik::Client.new(order: order).order).to eq order
-    end
-  end
-
-  describe '#categories' do
-    context 'when it has a product with taxons' do
-      it 'returns the name of the taxons of the product' do
-        taxon   = double(:taxon, name: 'shirts')
-        product = double(:product, taxons: [taxon])
-        expect(Spree::Piwik::Client.new(product: product).categories).to match_array ['shirts']
-      end
-    end
-
-    context 'when it has a product with more then 5 taxons' do
-      it 'limits the categories to five items' do
-        taxon   = double(:taxon, name: 'shirts')
-        product = double(:product, taxons: Array.new(6, taxon))
-        expect(Spree::Piwik::Client.new(product: product).categories.length).to eq 5
-      end
-    end
-
-    context 'when it has a product with no taxons' do
-      it 'returns an empty array' do
-        product = double(:product, taxons: [])
-        expect(Spree::Piwik::Client.new(product: product).categories).to eq []
-      end
-    end
-
-    context 'when it has no product' do
-      it 'returns an empty array' do
-        expect(subject.categories).to eq []
-      end
     end
   end
 

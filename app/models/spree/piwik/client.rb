@@ -24,12 +24,6 @@ module Spree
       def track_cart_update?
         !@order.nil? && @order.cart?
       end
-
-      def categories
-        taxons = @product.try(:taxons) || []
-
-        taxons.map(&:name).first(5)
-      end
     end
   end
 end
