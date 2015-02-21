@@ -16,7 +16,7 @@ feature "TrackingTagForProduct", type: :feature do
     tag_component = PiwikTagComponent.new
     expect(tag_component).to be_in_html
     expect(tag_component.to_s).to include 'setEcommerceView'
-    expect(tag_component.to_s).to eq fixture('product_example_com.html')
+    expect(tag_component.as_ecma).to eq fixture('product_example_com.js')
   end
 
   # As a shop-owner
@@ -40,6 +40,6 @@ feature "TrackingTagForProduct", type: :feature do
     tag_component = PiwikTagComponent.new
     expect(tag_component).to be_in_html
     expect(tag_component.to_s).to include 'setEcommerceView'
-    expect(tag_component.to_s).to eq fixture('product_example_com_categories.html')
+    expect(tag_component.as_ecma).to eq fixture('product_example_com_categories.js')
   end
 end

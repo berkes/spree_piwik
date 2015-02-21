@@ -7,6 +7,6 @@ feature "InteractWithCart", type: :feature do
     click_button "Add To Cart"
 
     tag_component = PiwikTagComponent.new
-    expect(tag_component.to_s).to eq fixture('product_added_to_cart.html')
+    expect(tag_component.as_ecma).to eq fixture('product_added_to_cart.js')
   end
 end
