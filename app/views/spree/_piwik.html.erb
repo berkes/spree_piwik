@@ -5,12 +5,7 @@
     _paq.push(['setSiteId', <%= piwik_client.site_id %>]);
     _paq.push(['setTrackerUrl', u+'piwik.php']);
   <%- if piwik_client.product %>
-    _paq.push(['setEcommerceView',
-      "<%= piwik_client.product.sku %>",
-      "<%= piwik_client.product.name %>",
-      <%= raw piwik_client.product.categories.to_json %>,
-      <%= piwik_client.product.price %>
-      ]);
+    <%= render partial: 'spree/ecommerce_view', locals: { product: piwik_client.product } %>
   <% end %>
   <% if piwik_client.track_cart_update? %>
     _paq.push(['addEcommerceItem',
