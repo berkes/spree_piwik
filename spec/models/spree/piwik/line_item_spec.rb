@@ -1,16 +1,17 @@
 require 'spec_helper'
 
 describe Spree::Piwik::LineItem, type: :model do
-  describe '.from_product' do
-    let(:product) { double(:product, sku: 'sku', name: 'name', price: 'price', taxons: []) }
-    let(:line_item) { Spree::Piwik::LineItem.from_product(product) }
+  describe '.from_product_ish' do
+    let(:product) { double(:product, sku: 'sku', name: 'name', price: 'price', quantity: 'quantity', taxons: []) }
+    let(:line_item) { Spree::Piwik::LineItem.from_product_ish(product) }
 
-    it 'instantiates self from a product' do
+    it 'instantiates self from a line_item-ish item' do
       expect(line_item).to be_a_kind_of Spree::Piwik::LineItem
       expect(line_item.sku).to eq 'sku'
       expect(line_item.name).to eq 'name'
       expect(line_item.price).to eq 'price'
-      expect(line_item.quantity).to be_nil
+      expect(line_item.quantity).to eq 'quantity'
+      expect(line_item.categories).to eq []
     end
 
     describe '#categories' do
@@ -35,18 +36,6 @@ describe Spree::Piwik::LineItem, type: :model do
           expect(line_item.categories).to eq []
         end
       end
-    end
-  end
-
-  describe '.from_line_item' do
-    it 'instantiates self from a line_item' do
-      spree_line_item = double(:spree_line_item, sku: 'sku', name: 'name', price: 'price', quantity: 1)
-      line_item = Spree::Piwik::LineItem.from_spree_line_item(spree_line_item)
-      expect(line_item).to be_a_kind_of Spree::Piwik::LineItem
-      expect(line_item.sku).to eq 'sku'
-      expect(line_item.name).to eq 'name'
-      expect(line_item.price).to eq 'price'
-      expect(line_item.quantity).to eq 1
     end
   end
 
