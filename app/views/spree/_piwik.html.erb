@@ -8,13 +8,7 @@
     <%= render partial: 'spree/ecommerce_view', locals: { product: piwik_client.product } %>
   <% end %>
   <% if piwik_client.track_cart_update? %>
-    _paq.push(['addEcommerceItem',
-      "<%= piwik_client.ecommerce_item.sku %>",
-      "<%= piwik_client.ecommerce_item.name %>",
-      <%= raw piwik_client.ecommerce_item.categories.to_json %>,
-      <%= piwik_client.ecommerce_item.price %>,
-      <%= piwik_client.ecommerce_item.quantity %>
-      ]);
+    <%= render :partial => 'spree/ecommerce_item', :locals => { :ecommerce_item => piwik_client.ecommerce_item } %>
     _paq.push(['trackEcommerceCartUpdate', 19.99]);
   <% end %>
     _paq.push(['trackPageView']);
