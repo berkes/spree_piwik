@@ -35,14 +35,14 @@ describe Spree::Piwik::Client, type: :model do
     end
   end
 
-  describe '#ecommerce_item' do
+  describe '#ecommerce_items' do
     context 'when order is set' do
-      it 'has the first line_item in the order' do
+      it 'has the ine_items in the order' do
         product = double(:product, sku: 'sku', name: 'name', price: 'price', quantity: 1)
         subject.order = double(:order, line_items: [product])
-        expect(subject.ecommerce_item).to be_a_kind_of Spree::Piwik::LineItem
-        expect(subject.ecommerce_item.sku).to eq 'sku'
-        expect(subject.ecommerce_item.quantity).to eq 1
+        expect(subject.ecommerce_items.first).to be_a_kind_of Spree::Piwik::LineItem
+        expect(subject.ecommerce_items.first.sku).to eq 'sku'
+        expect(subject.ecommerce_items.first.quantity).to eq 1
       end
     end
   end

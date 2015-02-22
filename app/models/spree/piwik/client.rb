@@ -17,8 +17,8 @@ module Spree
         Spree::Piwik::Config.preferred_piwik_id
       end
 
-      def ecommerce_item
-        LineItem.from_product_ish(@order.line_items.first)
+      def ecommerce_items
+        @order.line_items.map { |li| Spree::Piwik::LineItem.from_product_ish(li) }
       end
 
       def track_cart_update?
