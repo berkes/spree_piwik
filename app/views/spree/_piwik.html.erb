@@ -9,7 +9,7 @@
   <% end %>
   <% if piwik_client.track_cart_update? %>
     <%= render :partial => 'spree/ecommerce_item', :locals => { :ecommerce_item => piwik_client.ecommerce_item } %>
-    _paq.push(['trackEcommerceCartUpdate', 19.99]);
+    _paq.push(['trackEcommerceCartUpdate', <%= piwik_client.order.total %>]);
   <% end %>
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
