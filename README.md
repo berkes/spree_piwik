@@ -37,8 +37,4 @@ bundle exec rake
 When testing your applications integration with this extension you may use it's factories.
 Simply add this require statement to your spec_helper:
 
-```ruby
-require 'spree_piwik/factories'
-```
-
 Copyright (c) 2015 Bèr Kessels
