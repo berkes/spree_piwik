@@ -27,7 +27,7 @@ module Spree
       # Private
       def self.product_ish_attr(attr_name, product_ish)
         mapping_method = "map_product_ish_#{attr_name}".to_sym
-        if respond_to?(mapping_method) 
+        if respond_to?(mapping_method)
           send(mapping_method, product_ish)
         else
           product_ish.try(attr_name)
