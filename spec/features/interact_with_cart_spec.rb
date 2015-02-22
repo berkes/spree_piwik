@@ -36,4 +36,14 @@ feature "InteractWithCart", type: :feature do
     tag_component = PiwikTagComponent.new
     expect(tag_component.as_ecma).to eq fixture('one_product_in_cart.js')
   end
+
+  scenario "An anonymous user empties a cart" do
+    @shirt = FactoryGirl.create(:product, sku: 'SKU-1', name: 'RoR Shirt')
+    visit "products/#{@shirt.slug}"
+    click_button "Add To Cart"
+    click_button "Empty Cart"
+
+    tag_component = PiwikTagComponent.new
+    expect(tag_component.as_ecma).to eq fixture('empty_cart.js')
+  end
 end
