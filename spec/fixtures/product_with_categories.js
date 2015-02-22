@@ -5,7 +5,7 @@
  _paq.push(['setEcommerceView',
    'SKU-1',
    'RoR Shirt',
-   ['shirts','ror','webdev'],
+   ["shirts","ror","webdev"],
    19.99
    ]);
  _paq.push(['trackPageView']);
