@@ -5,7 +5,7 @@ feature "TrackingTagForProduct", type: :feature do
   # I want to send stats with the product"s attributes to piwik
   # So that I can allow Piwik to process reports on SKU and products.
   scenario "An anonymous user is tracked on a product page" do
-    @product = FactoryGirl.create(:product, sku: "SKU-1", name: "RoR Shirt")
+    @product = create(:product, sku: "SKU-1", name: "RoR Shirt")
     # TODO replace with visit "product/slug"
     visit "/"
     click_link(@product.name)
@@ -24,11 +24,11 @@ feature "TrackingTagForProduct", type: :feature do
   # So that can filter stats in Piwik on categories
   scenario "An anonymous user is tracked on a product page with categories" do
     taxons = [
-      FactoryGirl.create(:taxon, name: "shirts"),
-      FactoryGirl.create(:taxon, name: "ror"),
-      FactoryGirl.create(:taxon, name: "webdev"),
+      create(:taxon, name: "shirts"),
+      create(:taxon, name: "ror"),
+      create(:taxon, name: "webdev"),
     ]
-    @product = FactoryGirl.create(:product, sku: "SKU-1", name: "RoR Shirt", taxons: taxons)
+    @product = create(:product, sku: "SKU-1", name: "RoR Shirt", taxons: taxons)
 
     # TODO replace with visit "product/slug"
     visit "/"
