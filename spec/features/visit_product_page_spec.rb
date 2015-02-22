@@ -6,9 +6,7 @@ feature "TrackingTagForProduct", type: :feature do
   # So that I can allow Piwik to process reports on SKU and products.
   scenario "An anonymous user is tracked on a product page" do
     @product = create(:product, sku: "SKU-1", name: "RoR Shirt")
-    # TODO replace with visit "product/slug"
-    visit "/"
-    click_link(@product.name)
+    visit "/products/#{@product.slug}"
 
     # Sanity check
     expect(page).to have_content @product.name
@@ -30,12 +28,7 @@ feature "TrackingTagForProduct", type: :feature do
     ]
     @product = create(:product, sku: "SKU-1", name: "RoR Shirt", taxons: taxons)
 
-    # TODO replace with visit "product/slug"
-    visit "/"
-    click_link(@product.name)
-
-    # Sanity check
-    expect(page).to have_content @product.name
+    visit "/products/#{@product.slug}"
 
     tag_component = PiwikTagComponent.new
     expect(tag_component).to be_in_html
