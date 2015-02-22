@@ -7,8 +7,10 @@
   <%- if piwik_client.product %>
     <%= render partial: 'spree/ecommerce_view', locals: { product: piwik_client.product } %>
   <% end %>
-  <% if piwik_client.track_cart_update? %>
+  <% if piwik_client.order %>
     <%= render :partial => 'spree/ecommerce_item', :collection => piwik_client.ecommerce_items %>
+  <% end %>
+  <% if piwik_client.track_cart_update? %>
     _paq.push(['trackEcommerceCartUpdate', <%= piwik_client.order.total %>]);
   <% end %>
     _paq.push(['trackPageView']);
