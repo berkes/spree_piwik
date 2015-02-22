@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.author    = 'Bèr Kessels'
   s.email     = 'ber@berk.es'
   s.homepage  = 'http://berk.es'
+  s.license   = 'BSD-3'
 
   s.files       = `git ls-files`.split("\n")
   s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
