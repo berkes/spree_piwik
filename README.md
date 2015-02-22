@@ -38,4 +38,8 @@ bundle exec rake
 When testing your applications integration with this extension you may use it's factories.
 Simply add this require statement to your spec_helper:
 
-Copyright (c) 2015 Bèr Kessels
+
+License
+-------
+
+SpreePiwik is released under the [New BSD License](https://github.com/spree/spree/blob/master/license.md) similar to Spree.
