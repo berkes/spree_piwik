@@ -24,13 +24,13 @@ module Spree
         new(Hash[values])
       end
 
-      private
-
+      # Private
       def self.product_ish_attr(attr_name, product_ish)
         mapping_method = "map_product_ish_#{attr_name}".to_sym
         self.respond_to?(mapping_method) ? send(mapping_method, product_ish) : product_ish.try(attr_name)
       end
 
+      # Private
       def self.map_product_ish_categories(product_ish)
         defaulted_taxons = product_ish.try(:taxons) || []
         defaulted_taxons.map(&:name).first(5)
