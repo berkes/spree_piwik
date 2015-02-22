@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_piwik'
-  s.version     = '2.3.6'
+  s.version     = '0.0.1'
   s.summary     = 'Adds piwik tracking with Ecommerce tracking'
   s.description = File.read(File.join(File.dirname(__FILE__), 'README.md'))
   s.required_ruby_version = '>= 1.9.3'
@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   s.email     = 'ber@berk.es'
   s.homepage  = 'http://berk.es'
 
-  #s.files       = `git ls-files`.split("\n")
-  #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.files       = `git ls-files`.split("\n")
+  s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
 
