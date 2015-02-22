@@ -2,7 +2,7 @@ require "spec_helper"
 
 feature "InteractWithCart", type: :feature do
   scenario "An anonymous user adds a product to the cart" do
-    @product = FactoryGirl.create(:product, sku: "SKU-1", name: "RoR Shirt")
+    @product = create(:product, sku: "SKU-1", name: "RoR Shirt")
     visit "products/#{@product.slug}"
     click_button "Add To Cart"
 
@@ -11,10 +11,10 @@ feature "InteractWithCart", type: :feature do
   end
 
   scenario "An anonymous user adds multiple products to the cart" do
-    @shirt = FactoryGirl.create(:product, sku: "SKU-1", name: "RoR Shirt")
+    @shirt = create(:product, sku: "SKU-1", name: "RoR Shirt")
     visit "products/#{@shirt.slug}"
     click_button "Add To Cart"
-    @sticker = FactoryGirl.create(:product, sku: "SKU-2", name: "RoR Sticker", price: 0.99)
+    @sticker = create(:product, sku: "SKU-2", name: "RoR Sticker", price: 0.99)
     visit "products/#{@sticker.slug}"
     click_button "Add To Cart"
 
@@ -23,10 +23,10 @@ feature "InteractWithCart", type: :feature do
   end
 
   scenario "An anonymous user removes a product from cart" do
-    @shirt = FactoryGirl.create(:product, sku: "SKU-1", name: "RoR Shirt")
+    @shirt = create(:product, sku: "SKU-1", name: "RoR Shirt")
     visit "products/#{@shirt.slug}"
     click_button "Add To Cart"
-    @sticker = FactoryGirl.create(:product, sku: "SKU-2", name: "RoR Sticker", price: 0.99)
+    @sticker = create(:product, sku: "SKU-2", name: "RoR Sticker", price: 0.99)
     visit "products/#{@sticker.slug}"
     click_button "Add To Cart"
 
@@ -38,7 +38,7 @@ feature "InteractWithCart", type: :feature do
   end
 
   scenario "An anonymous user empties a cart" do
-    @shirt = FactoryGirl.create(:product, sku: "SKU-1", name: "RoR Shirt")
+    @shirt = create(:product, sku: "SKU-1", name: "RoR Shirt")
     visit "products/#{@shirt.slug}"
     click_button "Add To Cart"
     click_button "Empty Cart"
