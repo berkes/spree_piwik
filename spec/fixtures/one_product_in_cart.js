@@ -1,10 +1,10 @@
 var _paq = _paq || [];
-(function(){ var u=(("https:" == document.location.protocol) ? "https://example.com/" : "http://example.com/");
+(function(){ var u=(('https:' == document.location.protocol) ? 'https://example.com/' : 'http://example.com/');
 _paq.push(['setSiteId', 0]);
 _paq.push(['setTrackerUrl', u+'piwik.php']);
 _paq.push(['addEcommerceItem',
-  "SKU-1",
-  "RoR Shirt",
+  'SKU-1',
+  'RoR Shirt',
   [],
   19.99,
   1

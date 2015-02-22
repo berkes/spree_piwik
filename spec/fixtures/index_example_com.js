@@ -1,5 +1,5 @@
 var _paq = _paq || [];
-(function(){ var u=(("https:" == document.location.protocol) ? "https://piwik.example.com/" : "http://piwik.example.com/");
+(function(){ var u=(('https:' == document.location.protocol) ? 'https://piwik.example.com/' : 'http://piwik.example.com/');
 _paq.push(['setSiteId', 1337]);
 _paq.push(['setTrackerUrl', u+'piwik.php']);
 _paq.push(['trackPageView']);

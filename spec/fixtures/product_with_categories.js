@@ -1,11 +1,11 @@
  var _paq = _paq || [];
- (function(){ var u=(("https:" == document.location.protocol) ? "https://example.com/" : "http://example.com/");
+ (function(){ var u=(('https:' == document.location.protocol) ? 'https://example.com/' : 'http://example.com/');
  _paq.push(['setSiteId', 0]);
  _paq.push(['setTrackerUrl', u+'piwik.php']);
  _paq.push(['setEcommerceView',
-   "SKU-1",
-   "RoR Shirt",
-   ["shirts","ror","webdev"],
+   'SKU-1',
+   'RoR Shirt',
+   ['shirts','ror','webdev'],
    19.99
    ]);
  _paq.push(['trackPageView']);
