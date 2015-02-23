@@ -24,7 +24,16 @@ module Spree
       end
 
       def track_cart_update?
-        !@order.nil? && @order.cart?
+        order? && @order.cart?
+      end
+
+      def track_ecommerce_order?
+        order? && @order.complete?
+      end
+
+      private
+      def order?
+        !@order.nil?
       end
     end
   end
