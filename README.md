@@ -25,6 +25,18 @@ bundle
 bundle exec rails g spree_piwik:install
 ```
 
+Add your Piwik URL and site-id to the `config/initializers/spree_piwik.rb`
+
+For example:
+```ruby
+Spree::Piwik::Config[:piwik_url] = "piwik.example.com"
+Spree::Piwik::Config[:piwik_id] =  1337
+
+```
+Will use http(s)://piwik.example.com/ as url for your Piwik. And track
+stats for the site that has the id 1337 in Piwik.
+
+
 Testing
 -------
 
