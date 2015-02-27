@@ -13,6 +13,9 @@
   <% if piwik_client.track_cart_update? %>
     _paq.push(['trackEcommerceCartUpdate', <%= piwik_client.order.total %>]);
   <% end %>
+  <% if piwik_client.track_ecommerce_order? %>
+    <%= render :partial => 'spree/ecommerce_order', locals: { order:  piwik_client.order } %>
+  <% end %>
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
