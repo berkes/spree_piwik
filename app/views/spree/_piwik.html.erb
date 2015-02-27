@@ -7,9 +7,14 @@
   <%- if piwik_client.product %>
     <%= render partial: 'spree/ecommerce_view', locals: { product: piwik_client.product } %>
   <% end %>
-  <% if piwik_client.track_cart_update? %>
+  <% if piwik_client.order %>
     <%= render :partial => 'spree/ecommerce_item', :collection => piwik_client.ecommerce_items %>
+  <% end %>
+  <% if piwik_client.track_cart_update? %>
     _paq.push(['trackEcommerceCartUpdate', <%= piwik_client.order.total %>]);
+  <% end %>
+  <% if piwik_client.track_ecommerce_order? %>
+    <%= render :partial => 'spree/ecommerce_order', locals: { order:  piwik_client.order } %>
   <% end %>
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);

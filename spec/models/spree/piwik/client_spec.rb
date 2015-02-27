@@ -68,4 +68,25 @@ describe Spree::Piwik::Client, type: :model do
       end
     end
   end
+
+  describe "#track_ecommerce_order?" do
+    context 'when order with state complete is set' do
+      it 'is true' do
+        order = double(:order, complete?: true)
+        expect(Spree::Piwik::Client.new(order: order).track_ecommerce_order?).to eq true
+      end
+    end
+
+    context 'when order state is not complete' do
+      it 'is false' do
+        order = double(:order, complete?: false)
+        expect(Spree::Piwik::Client.new(order: order).track_ecommerce_order?).to eq false
+      end
+    end
+    context 'when order is empty' do
+      it 'is false' do
+        expect(subject.track_ecommerce_order?).to eq false
+      end
+    end
+  end
 end
