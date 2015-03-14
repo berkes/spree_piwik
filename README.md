@@ -37,6 +37,11 @@ Will use http(s)://piwik.example.com/ as url for your Piwik. And track
 stats for the site that has the id 1337 in Piwik.
 
 
+Screenshot
+----------
+
+![Screenshot of the Ecommerce functionality in action with this extension](doc/spree_piwik.png).
+
 Testing
 -------
 

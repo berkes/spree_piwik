@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_piwik'
-  s.version     = '1.0.0.alpha2'
+  s.version     = '1.0.0'
   s.summary     = 'Adds piwik tracking with Ecommerce tracking'
   s.description = File.read(File.join(File.dirname(__FILE__), 'README.md'))
   s.required_ruby_version = '>= 1.9.3'
