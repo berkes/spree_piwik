@@ -8,6 +8,7 @@ Status
 
 [![Build Status](https://travis-ci.org/berkes/spree_piwik.svg?branch=develop)](https://travis-ci.org/berkes/spree_piwik)
 [![Code Climate](https://codeclimate.com/github/berkes/spree_piwik/badges/gpa.svg)](https://codeclimate.com/github/berkes/spree_piwik)
+[![Test Coverage](https://codeclimate.com/github/berkes/spree_piwik/badges/coverage.svg)](https://codeclimate.com/github/berkes/spree_piwik)
 
 Installation
 ------------
