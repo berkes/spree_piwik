@@ -33,4 +33,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'selenium-webdriver', '~> 2.44'
   s.add_development_dependency 'simplecov', '~> 0'
   s.add_development_dependency 'sqlite3', '~> 1.3'
+  s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
 end
