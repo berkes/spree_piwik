@@ -9,19 +9,12 @@ _paq.push(['addEcommerceItem',
   10.0,
   1
   ]);
-_paq.push(['addEcommerceItem',
-  'SKU-2',
-  'RoR Sticker',
-  [],
-  10.0,
-  1
-  ]);
 _paq.push(['trackEcommerceOrder',
   'R1337',
-  120.0,
   20.0,
+  10.0,
   0.0,
-  100.0,
+  10.0,
   false
   ]);
 _paq.push(['trackPageView']);
