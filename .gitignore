@@ -5,7 +5,6 @@
 .idea
 .project
 .sass-cache
-Gemfile.lock
 tmp
 nbproject
 pkg
