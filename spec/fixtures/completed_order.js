@@ -6,16 +6,16 @@ _paq.push(['addEcommerceItem',
   'SKU-1',
   'RoR Shirt',
   [],
-  10.0,
+  19.99,
   1
   ]);
 _paq.push(['trackEcommerceOrder',
-  'R1337',
-  20.0,
-  10.0,
-  0.0,
-  10.0,
-  false
+  'R1337', /* orderId */
+  29.99,   /* grandTotal */
+  19.99,   /* subTotal */
+  0.0,     /* tax */
+  10.00,   /* shipping */
+  false    /* discount */
   ]);
 _paq.push(['trackPageView']);
 _paq.push(['enableLinkTracking']);
